@@ -6,7 +6,7 @@ Create a custom mixed-media editorial portrait from a single uploaded person pho
 
 The core principle is:
 
-**Keep the real person recognizable, then redesign the visual world around them.**
+**Keep the real person recognizable, preserve the real outfit, then redesign the visual world around them.**
 
 Do not apply one fixed doodle template to every image. First analyze the uploaded photo, then choose the most suitable art direction based on the actual visual information in that photo.
 
@@ -22,6 +22,7 @@ Optional:
 - User-specified amount of text.
 - User-specified color preference.
 - User request to emphasize or suppress a certain style direction.
+- User request to preserve clothing with extra strictness.
 
 If no extra instructions are provided, use the automatic analysis workflow below.
 
@@ -40,6 +41,12 @@ Always preserve:
 - gaze direction
 - hand placement
 - clothing silhouette
+- clothing structure
+- clothing category
+- main garment proportions
+- original pattern logic such as stripes, checks, color blocking, seams, collar shape, cuffs, pockets, hems, and panel divisions
+- original clothing color relationship
+- footwear type
 - number of people
 
 Do not:
@@ -49,8 +56,23 @@ Do not:
 - add extra people
 - alter the original pose without a clear user request
 - invent a profession, hobby, location, personality trait, or life story that is not visible in the photo
+- redesign or replace the original outfit
+- change the garment category
+- destroy the original clothing pattern logic
+- overwrite the clothing so heavily that the original shirt, trousers, shoes, or accessories become unrecognizable
 
-The face should remain primarily photographic. Artistic treatment should focus on clothing, silhouette edges, negative space, surrounding graphic elements, and selected environmental clues.
+### Critical clothing preservation rule
+
+The original clothing must still read as the same real outfit at first glance.
+
+Do not redesign the clothing into a different fashion item.
+Do not replace striped clothing with unrelated multicolor abstract patterns.
+Do not replace plain garments with invented prints unless the effect is only a light artistic surface overlay.
+Do not alter collar shape, sleeve length, cuff placement, pocket placement, seam structure, trouser silhouette, or footwear type.
+
+Any artistic treatment on clothing must remain a surface-level enhancement. It may add contour emphasis, selective color, crayon texture, rough outlines, or partial translucent marks, but it must not create a new garment design.
+
+The face should remain primarily photographic. Artistic treatment should focus on clothing surfaces, silhouette edges, negative space, surrounding graphic elements, and selected environmental clues.
 
 ---
 
@@ -67,9 +89,12 @@ Before writing the generation prompt, identify:
 
 2. **Clothing**
    - silhouette
+   - garment category
    - dominant colors
    - texture or pattern
+   - collar, cuffs, pockets, seams, hems, and panel divisions
    - whether the outfit itself is visually distinctive
+   - whether the clothing pattern must be protected strictly
 
 3. **Scene**
    - plain background
@@ -96,8 +121,8 @@ Before writing the generation prompt, identify:
 
 5. **Color structure**
    - select 2–3 colors already present in the photo
-   - add at most 1 complementary accent color
-   - keep the main palette to roughly 4–5 colors maximum
+   - add at most 1 complementary accent color by default
+   - keep the main palette to roughly 4–5 colors maximum unless the user clearly wants a brighter expressive result
 
 6. **Information density**
    - low
@@ -123,19 +148,25 @@ Use when:
 
 Treatment:
 - keep the face photographic
-- repaint clothing surfaces with expressive crayon, wax pastel, marker, or oil pastel overlays
-- add rough color blocks and imperfect contour lines
-- use large abstract gestures around the body
-- avoid dense text
-- preserve garment construction and shape
+- preserve the original clothing structure, silhouette, category, color relationship, and pattern logic
+- if the garment contains stripes, checks, seams, panels, pockets, or other visible design logic, keep those features recognizable
+- apply expressive crayon, wax pastel, marker, or oil pastel overlays as surface treatment only
+- overlays may enhance edges, folds, selected panels, cuffs, collars, hems, pockets, or small garment zones
+- allow selective color accents and hand-drawn contour emphasis
+- do not replace the garment with a new invented pattern
+- do not convert the outfit into a different fashion design
+- keep the original outfit readable at first glance
+- use large abstract gestures around the body when useful, but keep them visually separate from the clothing construction
+- avoid dense text unless the composition clearly benefits from it
 
 Visual keywords:
 - fashion editorial
 - wax pastel
 - oil crayon
 - expressive hand coloring
-- oversized naïve strokes
-- loose floral scribbles
+- surface-level garment enhancement
+- contour emphasis
+- selective color overlay
 - handmade imperfection
 
 ---
@@ -149,9 +180,10 @@ Use when:
 Treatment:
 - translate visible objects or activities into simple hand-drawn symbols
 - add a small number of context-relevant words only when justified
-- keep icons around the head, shoulders, and negative space
+- keep icons around the head, shoulders, body silhouette, and negative space
 - do not cover eyes, nose, or mouth
 - maintain strong hierarchy and breathing room
+- preserve clothing exactly as the same outfit
 
 Examples:
 - laptop → cursor, brackets, UI windows, keyboard marks
@@ -177,6 +209,7 @@ Treatment:
 - allow graphics to sit behind and partially around the person
 - keep the face photographic
 - avoid fake narrative symbols or made-up text
+- do not allow graphic marks to replace real garment construction or pattern logic
 
 Visual keywords:
 - contemporary graphic pop
@@ -198,6 +231,7 @@ Treatment:
 - derive doodle motifs from the actual place or architecture
 - possible additions: building outline, transit-like line, route arrow, place-name fragment, travel marker, simple geographic symbol
 - keep the person as the main visual anchor
+- preserve the original outfit exactly as the same outfit
 
 Do not overwhelm the portrait with scenery.
 
@@ -205,16 +239,12 @@ Do not overwhelm the portrait with scenery.
 
 ## Step 3 — Background simplification
 
-This is a critical rule.
-
-**Default to a simplified background.**
-
-Do not preserve the entire original environment unless it is essential to the story.
+Default to a simplified background, but do not simplify so aggressively that the scene loses all useful visual context.
 
 Use this hierarchy:
 
 1. Keep the person intact.
-2. Keep 0–2 meaningful environmental anchors.
+2. Keep 0–2 meaningful environmental anchors by default.
 3. Remove or fade secondary furniture, architecture, clutter, signage, tables, wall details, or random objects.
 4. Replace discarded background areas with:
    - warm off-white
@@ -224,13 +254,61 @@ Use this hierarchy:
    - very soft neutral photographic tone
 5. Use hand-drawn graphics to reconnect the simplified space.
 
-For visually busy photos, the final background should usually feel at least **50–70% simpler** than the source.
+For visually busy photos, the final background should usually feel around 50–70% simpler than the source.
 
-Avoid collage overload.
+However, if the source environment itself contributes strongly to the editorial composition, preserve more of it while still reducing clutter.
+
+Avoid collage overload unless the user explicitly requests a collage treatment.
 
 ---
 
-## Step 4 — Doodle material language
+## Step 4 — Garment intervention control
+
+This is a critical control rule.
+
+When artistic treatment affects clothing, choose one of the following levels:
+
+### Level 1 — Minimal garment enhancement
+
+Use when:
+- the user wants the original outfit to stay almost fully intact
+- the clothing itself is already visually strong
+
+Treatment:
+- preserve all original garment colors and patterns
+- add only light contour lines, small crayon accents, and subtle textured highlights
+- no large recoloring
+
+### Level 2 — Moderate garment enhancement
+
+Use when:
+- the user wants a stronger editorial look without changing the outfit
+
+Treatment:
+- preserve garment structure, category, and pattern logic
+- add visible but partial color overlays
+- emphasize seams, folds, pockets, cuffs, hems, and silhouette edges
+- allow hand-drawn marks on selected clothing zones
+- keep at least 70–80% of the original garment design visually recognizable
+
+### Level 3 — Bold garment enhancement
+
+Use only when:
+- the user explicitly wants highly stylized fashion repainting
+
+Treatment:
+- keep the original clothing silhouette and key pattern logic visible
+- allow stronger color intervention
+- however, the result must still clearly read as the same original outfit, not a newly designed garment
+
+Default rule:
+Use Level 2 unless the user explicitly requests heavier clothing repainting.
+
+Never allow artistic enhancement to erase the recognizability of the original outfit.
+
+---
+
+## Step 5 — Doodle material language
 
 Preferred media:
 - wax crayon
@@ -256,10 +334,11 @@ Avoid:
 - glossy 3D rendering
 - smooth clip-art icons
 - children's-book cartoon faces
+- clothing overlays that behave like a new textile print
 
 ---
 
-## Step 5 — Text policy
+## Step 6 — Text policy
 
 Text is optional.
 
@@ -280,11 +359,11 @@ For context portraits, acceptable examples are generic observational phrases suc
 - JUST HERE
 - GOOD DAYS
 
-Avoid invented personal biography, job titles, names, dates, achievements, or personality claims.
+Avoid invented personal biography, job titles, names, dates, achievements, personality claims, or brand narratives.
 
 ---
 
-## Step 6 — Prompt construction
+## Step 7 — Prompt construction
 
 Build the final image-generation prompt in this order:
 
@@ -292,29 +371,41 @@ Build the final image-generation prompt in this order:
 
 "Strictly preserve the uploaded person's identity, recognizable facial features, hairstyle, age impression, skin tone, body proportions, pose, hand placement, gaze direction, and clothing silhouette. Keep the face primarily photographic and realistic."
 
-### 2. Scene simplification block
+### 2. Clothing-lock block
 
-"Greatly simplify the background. Preserve only the environmental details that materially support the image story. Remove visual clutter and convert most of the background into clean warm off-white / neutral paper-like negative space."
+"Strictly preserve the person's original clothing as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, seams, hem shape, trousers silhouette, footwear type, and visible pattern logic such as stripes, checks, panel divisions, and major color relationships clearly recognizable. Any artistic treatment on clothing must behave like a surface overlay only and must not redesign the outfit."
 
-### 3. Selected style block
+### 3. Scene simplification block
+
+"Greatly simplify the background only as much as needed. Preserve the environmental details that materially support the image story. Remove unnecessary visual clutter and convert much of the background into clean warm off-white, light gray, muted cream, or softly textured neutral negative space."
+
+### 4. Selected style block
 
 Insert the treatment for Fashion Paint, Identity Doodle, Graphic Pop, or Travel Doodle.
 
-### 4. Color block
+### 5. Color block
 
-"Extract 2–3 dominant colors from the source photograph and add at most one complementary accent color. Limit the main palette to approximately 4–5 colors."
+"Extract 2–3 dominant colors from the source photograph and add at most one complementary accent color by default. Limit the main palette to approximately 4–5 colors unless a brighter editorial mood is explicitly requested."
 
-### 5. Material block
+### 6. Material block
 
-"Use expressive wax crayon, oil pastel, marker, dry-brush and rough pencil textures with visible grain, uneven pressure, imperfect edges, and handmade irregularity."
+"Use expressive wax crayon, oil pastel, marker, dry-brush, chalk, and rough pencil textures with visible grain, uneven pressure, imperfect edges, and handmade irregularity."
 
-### 6. Composition block
+### 7. Composition block
 
 "Keep the person as the dominant visual anchor. Place added graphics mainly in negative space and around the body silhouette. Maintain a clear visual hierarchy and generous breathing room."
 
-### 7. Negative constraints
+### 8. Negative constraints
 
-"Do not cartoonize the face, do not change identity, do not add extra people, do not invent professions or hobbies, do not overfill the background, do not use polished vector graphics, do not create glossy 3D rendering, and do not turn the entire image into an illustration."
+"Do not cartoonize the face, do not change identity, do not add extra people, do not invent professions or hobbies, do not overfill the background, do not use polished vector graphics, do not create glossy 3D rendering, do not turn the entire image into an illustration, do not redesign the person's clothing, do not replace real stripes or garment construction with unrelated decorative patterns, and do not overpaint the outfit until it becomes unrecognizable."
+
+---
+
+## Clothing-lock prompt add-on
+
+Use this add-on whenever outfit preservation is important:
+
+> Preserve the person's original clothing exactly as the same outfit. Keep the shirt, trousers, shoes, and all garment construction details recognizable. Preserve collar shape, sleeve length, cuffs, pocket placement, seam structure, and pattern logic such as stripes or checks. Any doodle, paint, or crayon treatment applied to the clothing must behave like a transparent or semi-opaque surface overlay, not like a redesign. The outfit should still be immediately readable as the original real clothing.
 
 ---
 
@@ -322,21 +413,23 @@ Insert the treatment for Fashion Paint, Identity Doodle, Graphic Pop, or Travel 
 
 Use this when the user asks to automatically choose the style:
 
-> Analyze the uploaded portrait before stylizing it. Identify the person's pose, expression, clothing silhouette, scene type, meaningful visible objects, dominant colors, and the overall information density. Based only on visible evidence, choose the strongest primary direction from Fashion Paint, Identity Doodle, Graphic Pop, or Travel Doodle. A subtle secondary influence may be blended in only when it improves the image.
+> Analyze the uploaded portrait before stylizing it. Identify the person's pose, expression, clothing silhouette, garment structure, visible pattern logic, scene type, meaningful visible objects, dominant colors, and overall information density. Based only on visible evidence, choose the strongest primary direction from Fashion Paint, Identity Doodle, Graphic Pop, or Travel Doodle. A subtle secondary influence may be blended in only when it improves the image.
 >
 > Strictly preserve the uploaded person's identity, recognizable facial features, hairstyle, age impression, skin tone, body proportions, original pose, hand placement, gaze direction, and clothing silhouette. Keep the face primarily photographic and realistic.
 >
-> Greatly simplify the background. Preserve only 0–2 meaningful environmental anchors that support the image story. Remove secondary furniture, architectural clutter, signage, wall details, and random objects. Convert the remaining space into warm off-white, light gray, muted cream, or softly textured neutral negative space. The final background should feel significantly cleaner than the original.
+> Strictly preserve the original outfit as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, hems, trousers shape, footwear type, and visible pattern logic such as stripes, checks, seam lines, panel divisions, and major color relationships clearly recognizable. Any artistic enhancement on clothing must remain a surface treatment only and must not redesign the outfit.
 >
-> If the outfit is the strongest feature, use Fashion Paint: expressive wax-crayon and oil-pastel overlays on the clothing, rough hand-drawn contour lines, partial color fills, and a few oversized abstract gestures around the body.
+> Greatly simplify the background only as much as needed. Preserve only the environmental details that materially support the image story. Remove unnecessary clutter and convert much of the background into clean warm off-white, light gray, muted cream, or softly textured neutral negative space unless the source image clearly benefits from retaining more of the original scene.
 >
-> If the photo clearly shows a meaningful activity, object, or context, use Identity Doodle: convert those visible clues into a small number of simple hand-drawn symbols and, when useful, 0–4 short contextual phrases. Do not invent identity information that is not visible.
+> If the outfit is the strongest feature, use Fashion Paint: preserve the original clothing structure and pattern logic, then apply expressive wax-crayon and oil-pastel overlays as a surface treatment only. Use rough hand-drawn contour lines, selective color accents, partial textured fills, and a few oversized abstract gestures around the body. The clothing must still read clearly as the same original garment.
 >
-> If the source lacks narrative clues, use Graphic Pop: abstract curves, loops, stars, waves, geometric marks, irregular stripes, and bold hand-drawn color blocks with an editorial, contemporary graphic feel.
+> If the photo clearly shows a meaningful activity, object, or context, use Identity Doodle: convert visible clues into a small number of simple hand-drawn symbols and, when useful, 0–4 short contextual phrases. Do not invent identity information that is not visible.
+>
+> If the source lacks narrative clues, use Graphic Pop: abstract curves, loops, stars, waves, geometric marks, irregular stripes, and bold hand-drawn color blocks with an editorial feel, but do not let these replace the real garment design.
 >
 > If the image clearly contains a recognizable travel setting, use Travel Doodle: retain only the key place cue and transform its real visual information into simplified hand-drawn motifs around the portrait.
 >
-> Extract 2–3 dominant colors from the source photograph and add at most one complementary accent color. Limit the main palette to approximately 4–5 colors.
+> Extract 2–3 dominant colors from the source photograph and add at most one complementary accent color unless a brighter editorial mood is clearly appropriate. Limit the main palette to approximately 4–5 colors.
 >
 > Use expressive wax crayon, oil pastel, marker, dry brush, chalk, and rough pencil textures with visible grain, uneven pressure, broken edges, partial fills, overlapping strokes, and slight handmade misregistration.
 >
@@ -346,7 +439,7 @@ Use this when the user asks to automatically choose the style:
 >
 > authentic portrait photography × expressive hand drawing × contemporary editorial design.
 >
-> Do not cartoonize the face. Do not alter identity. Do not add extra people. Do not invent biography, profession, hobby, or location. Do not preserve excessive background clutter. Do not use overly smooth vector graphics. Do not make the entire image look like an illustration.
+> Do not cartoonize the face. Do not alter identity. Do not add extra people. Do not invent biography, profession, hobby, or location. Do not redesign the person's clothing into a different outfit. Do not replace real stripes, checks, seams, or garment construction with unrelated decorative patterns. Do not overpaint the clothing so heavily that the original outfit becomes unrecognizable.
 
 ---
 
@@ -362,11 +455,12 @@ Visible clues:
 
 Recommended:
 - primary: Identity Doodle
-- secondary: Graphic Pop
-- simplify café background heavily
+- secondary: Graphic Pop or Fashion Paint only when useful
+- simplify café background moderately
 - retain cup + one table or architectural cue
 - use coffee cup sketch / steam / small handwritten phrase
 - do not fill the page with café furniture
+- preserve the original outfit exactly as the same outfit
 
 ### Example: plain fashion portrait
 
@@ -379,6 +473,8 @@ Recommended:
 - Fashion Paint
 - no need for text
 - let the clothing carry most of the artwork
+- use Level 2 garment enhancement by default
+- preserve garment construction and pattern logic
 
 ### Example: travel portrait with landmark
 
@@ -387,6 +483,26 @@ Recommended:
 - keep person + landmark
 - remove most secondary tourists / shops / clutter
 - derive line motifs from landmark geometry
+- preserve the original outfit
+
+### Example: striped café portrait
+
+Visible clues:
+- seated person
+- coffee cup
+- casual café or outdoor seating
+- striped shirt
+- loose dark trousers
+- neutral subdued palette
+
+Recommended:
+- primary: Identity Doodle or Fashion Paint depending on user preference
+- preserve the striped shirt exactly as a striped shirt
+- do not replace the stripes with unrelated multicolor abstract fashion graphics
+- simplify the background moderately
+- retain one or two café anchors such as the cup and table
+- allow hand-drawn coffee icons, arrows, short phrases, and contour accents
+- if using Fashion Paint, apply it mainly as contour enhancement and partial overlay, not as clothing redesign
 
 ---
 
@@ -399,8 +515,9 @@ The final image should feel:
 - hand-made rather than vector-perfect
 - visually simplified
 - recognizably photographic at the face
+- faithful to the original outfit
 - unique to the subject and scene
 
-The most important final rule:
+The most important final rules:
 
-**Preserve the real person. Simplify the world. Add only art that belongs to the photograph.**
+**Preserve the real person. Preserve the real outfit. Simplify the world. Add only art that belongs to the photograph.**
