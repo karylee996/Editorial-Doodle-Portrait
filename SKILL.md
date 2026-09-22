@@ -70,7 +70,7 @@ Do not replace striped clothing with unrelated multicolor abstract patterns.
 Do not replace plain garments with invented prints unless the effect is only a light artistic surface overlay.
 Do not alter collar shape, sleeve length, cuff placement, pocket placement, seam structure, trouser silhouette, or footwear type.
 
-Any artistic treatment on clothing must remain a surface-level enhancement. It may add contour emphasis, selective color, crayon texture, rough outlines, or partial translucent marks, but it must not create a new garment design.
+Any artistic treatment on clothing must remain a surface-level enhancement. The clothing itself should be redrawn with visible wax-crayon / oil-crayon texture while staying close to the garment's original colors. Preserve the original color family, value relationship, stripe/check pattern, and material impression. Crayon strokes may simplify and stylize the fabric, but should not introduce unrelated rainbow colors or turn the clothing into a new colorway. It may add contour emphasis, rough outlines, textured fills, and partial translucent marks, but it must not create a new garment design.
 
 The face should remain primarily photographic. Artistic treatment should focus on clothing surfaces, silhouette edges, negative space, surrounding graphic elements, and selected environmental clues.
 
@@ -150,9 +150,10 @@ Treatment:
 - keep the face photographic
 - preserve the original clothing structure, silhouette, category, color relationship, and pattern logic
 - if the garment contains stripes, checks, seams, panels, pockets, or other visible design logic, keep those features recognizable
-- apply expressive crayon, wax pastel, marker, or oil pastel overlays as surface treatment only
+- redraw the clothing surfaces with expressive wax-crayon / oil-crayon texture while keeping the garment close to its original colors
+- preserve the original color family and pattern logic; for example, a pale blue striped shirt should remain a pale blue striped shirt after crayon treatment
 - overlays may enhance edges, folds, selected panels, cuffs, collars, hems, pockets, or small garment zones
-- allow selective color accents and hand-drawn contour emphasis
+- allow selective tonal variation and hand-drawn contour emphasis, but avoid unrelated rainbow recoloring on the clothing
 - do not replace the garment with a new invented pattern
 - do not convert the outfit into a different fashion design
 - keep the original outfit readable at first glance
@@ -285,8 +286,9 @@ Use when:
 - the user wants a stronger editorial look without changing the outfit
 
 Treatment:
-- preserve garment structure, category, and pattern logic
-- add visible but partial color overlays
+- preserve garment structure, category, pattern logic, and original color family
+- redraw the garment with visible wax-crayon texture using colors close to the source clothing
+- add visible but partial tonal overlays
 - emphasize seams, folds, pockets, cuffs, hems, and silhouette edges
 - allow hand-drawn marks on selected clothing zones
 - keep at least 70–80% of the original garment design visually recognizable
@@ -297,8 +299,8 @@ Use only when:
 - the user explicitly wants highly stylized fashion repainting
 
 Treatment:
-- keep the original clothing silhouette and key pattern logic visible
-- allow stronger color intervention
+- keep the original clothing silhouette, key pattern logic, and original color family visible
+- allow stronger crayon texture and bolder value variation while still staying close to the source garment colors
 - however, the result must still clearly read as the same original outfit, not a newly designed garment
 
 Default rule:
@@ -373,7 +375,7 @@ Build the final image-generation prompt in this order:
 
 ### 2. Clothing-lock block
 
-"Strictly preserve the person's original clothing as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, seams, hem shape, trousers silhouette, footwear type, and visible pattern logic such as stripes, checks, panel divisions, and major color relationships clearly recognizable. Any artistic treatment on clothing must behave like a surface overlay only and must not redesign the outfit."
+"Strictly preserve the person's original clothing as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, seams, hem shape, trousers silhouette, footwear type, visible pattern logic, and major color relationships clearly recognizable. Redraw the clothing surfaces with visible wax-crayon / oil-crayon texture, but keep the crayon colors close to the original garment colors. Do not introduce unrelated rainbow recoloring. Any artistic treatment on clothing must behave like a surface-level redraw and must not redesign the outfit."
 
 ### 3. Scene simplification block
 
@@ -405,7 +407,7 @@ Insert the treatment for Fashion Paint, Identity Doodle, Graphic Pop, or Travel 
 
 Use this add-on whenever outfit preservation is important:
 
-> Preserve the person's original clothing exactly as the same outfit. Keep the shirt, trousers, shoes, and all garment construction details recognizable. Preserve collar shape, sleeve length, cuffs, pocket placement, seam structure, and pattern logic such as stripes or checks. Any doodle, paint, or crayon treatment applied to the clothing must behave like a transparent or semi-opaque surface overlay, not like a redesign. The outfit should still be immediately readable as the original real clothing.
+> Preserve the person's original clothing exactly as the same outfit. Keep the shirt, trousers, shoes, and all garment construction details recognizable. Preserve collar shape, sleeve length, cuffs, pocket placement, seam structure, and pattern logic such as stripes or checks. Redraw the clothing with visible wax-crayon / oil-crayon texture, using colors that stay close to the garment's original color family and value relationships. Do not turn the clothing into a multicolor or rainbow redesign unless the source clothing is already multicolored. The outfit should still be immediately readable as the original real clothing.
 
 ---
 
@@ -417,11 +419,11 @@ Use this when the user asks to automatically choose the style:
 >
 > Strictly preserve the uploaded person's identity, recognizable facial features, hairstyle, age impression, skin tone, body proportions, original pose, hand placement, gaze direction, and clothing silhouette. Keep the face primarily photographic and realistic.
 >
-> Strictly preserve the original outfit as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, hems, trousers shape, footwear type, and visible pattern logic such as stripes, checks, seam lines, panel divisions, and major color relationships clearly recognizable. Any artistic enhancement on clothing must remain a surface treatment only and must not redesign the outfit.
+> Strictly preserve the original outfit as the same outfit. Keep garment category, collar shape, sleeves, cuffs, pockets, hems, trousers shape, footwear type, visible pattern logic, and major color relationships clearly recognizable. Redraw the clothing itself with visible wax-crayon / oil-crayon texture, but keep the crayon palette close to the original garment colors and preserve the original color family. Do not introduce unrelated rainbow recoloring. Any artistic enhancement on clothing must remain a surface treatment only and must not redesign the outfit.
 >
 > Greatly simplify the background only as much as needed. Preserve only the environmental details that materially support the image story. Remove unnecessary clutter and convert much of the background into clean warm off-white, light gray, muted cream, or softly textured neutral negative space unless the source image clearly benefits from retaining more of the original scene.
 >
-> If the outfit is the strongest feature, use Fashion Paint: preserve the original clothing structure and pattern logic, then apply expressive wax-crayon and oil-pastel overlays as a surface treatment only. Use rough hand-drawn contour lines, selective color accents, partial textured fills, and a few oversized abstract gestures around the body. The clothing must still read clearly as the same original garment.
+> If the outfit is the strongest feature, use Fashion Paint: preserve the original clothing structure, pattern logic, and original color family, then redraw the clothing surfaces with expressive wax-crayon / oil-crayon texture. Keep the crayon colors close to the source garment colors rather than making the clothes randomly multicolored. Use rough hand-drawn contour lines, textured fills, subtle tonal variation, and a few oversized abstract gestures around the body. The clothing must still read clearly as the same original garment.
 >
 > If the photo clearly shows a meaningful activity, object, or context, use Identity Doodle: convert visible clues into a small number of simple hand-drawn symbols and, when useful, 0–4 short contextual phrases. Do not invent identity information that is not visible.
 >
@@ -520,4 +522,4 @@ The final image should feel:
 
 The most important final rules:
 
-**Preserve the real person. Preserve the real outfit. Simplify the world. Add only art that belongs to the photograph.**
+**Preserve the real person. Preserve the real outfit. Redraw the clothing in crayon while keeping its original colors. Let the surrounding scene become more freely colorful. Add only art that belongs to the photograph.**
